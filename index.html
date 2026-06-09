@@ -877,130 +877,596 @@
 
 
                 /* FAQ SECTION */
-        .faq {
-            padding: 80px 0;
-            background: #fffcf9;
-            border-top: 1px solid #f0e4da;
-            border-bottom: 1px solid #f0e4da;
-        }
-
-        .faq__container {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 60px;
-        }
-
-        .faq__content {
-            flex: 1.2;
-        }
-
-        .faq__title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem;
-            font-weight: 400;
-            color: #2c241f;
-            margin-bottom: 36px;
-            letter-spacing: -0.3px;
-            position: relative;
-        }
-
-        .faq__title::after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            left: 0;
-            width: 60px;
-            height: 2px;
-            background: #b35c4a;
-            opacity: 0.5;
-        }
-
-        .faq__item {
-            border-bottom: 1px solid #f0e2da;
-            margin-bottom: 8px;
-        }
-
-        .faq__question {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 18px 0;
-            cursor: pointer;
-            font-weight: 500;
-            font-size: 1rem;
-            color: #2c241f;
-            transition: color 0.2s;
-        }
-
-        .faq__question:hover {
-            color: #b35c4a;
-        }
-
-        .faq__toggle {
-            transition: transform 0.3s ease;
-            flex-shrink: 0;
-            margin-left: 16px;
-        }
-
-        .faq__item.active .faq__toggle {
-            transform: rotate(180deg);
-        }
-
-        .faq__answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.3s ease;
-            font-size: 0.9rem;
-            font-weight: 300;
-            color: #7a6658;
-            line-height: 1.6;
-            padding-right: 20px;
-        }
-
-        .faq__item.active .faq__answer {
-            max-height: 200px;
-            padding-bottom: 20px;
-        }
-
-        .faq__visual {
-            flex: 0.8;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: sticky;
-            top: 100px;
-        }
-
-        .faq__image {
-            width: 100%;
-            max-width: 380px;
-            height: auto;
-            border-radius: 24px;
-            object-fit: cover;
-            /* box-shadow: 0 20px 35px rgba(0, 0, 0, 0.05); */
-        }
-
-        @media (max-width: 768px) {
-            .faq__container {
-                flex-direction: column;
-                text-align: center;
-                gap: 40px;
+            .faq {
+                padding: 80px 0;
+                background: #fffcf9;
+                border-top: 1px solid #f0e4da;
+                border-bottom: 1px solid #f0e4da;
             }
+
+            .faq__container {
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+                gap: 60px;
+            }
+
+            .faq__content {
+                flex: 1.2;
+            }
+
+            .faq__title {
+                font-family: 'Cormorant Garamond', serif;
+                font-size: 2.5rem;
+                font-weight: 400;
+                color: #2c241f;
+                margin-bottom: 36px;
+                letter-spacing: -0.3px;
+                position: relative;
+            }
+
             .faq__title::after {
+                content: '';
+                position: absolute;
+                bottom: -12px;
+                left: 0;
+                width: 60px;
+                height: 2px;
+                background: #b35c4a;
+                opacity: 0.5;
+            }
+
+            .faq__item {
+                border-bottom: 1px solid #f0e2da;
+                margin-bottom: 8px;
+            }
+
+            .faq__question {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 18px 0;
+                cursor: pointer;
+                font-weight: 500;
+                font-size: 1rem;
+                color: #2c241f;
+                transition: color 0.2s;
+            }
+
+            .faq__question:hover {
+                color: #b35c4a;
+            }
+
+            .faq__toggle {
+                transition: transform 0.3s ease-out;
+                flex-shrink: 0;
+                margin-left: 16px;
+            }
+
+            .faq__item.active .faq__toggle {
+                transform: rotate(180deg);
+            }
+
+            .faq__answer {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease-out, padding-bottom 0.3s ease-out;
+                font-size: 0.9rem;
+                font-weight: 300;
+                color: #7a6658;
+                line-height: 1.6;
+                padding-right: 20px;
+                padding-bottom: 0;
+            }
+
+            .faq__item.active .faq__answer {
+                max-height: 250px;
+                padding-bottom: 20px;
+            }
+
+            .faq__visual {
+                flex: 0.8;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: sticky;
+                top: 100px;
+            }
+
+            .faq__image {
+                width: 100%;
+                max-width: 380px;
+                height: auto;
+                border-radius: 24px;
+                object-fit: cover;
+            }
+
+            @media (max-width: 768px) {
+                .faq__container {
+                    flex-direction: column;
+                    text-align: center;
+                    gap: 40px;
+                }
+                .faq__title::after {
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+                .faq__visual {
+                    position: static;
+                }
+                .faq__image {
+                    max-width: 280px;
+                }
+                .faq__answer {
+                    text-align: left;
+                }
+            }
+                    /* Глобальное отключение tap highlight для всех интерактивных элементов */
+            button,
+            a,
+            [role="button"],
+            .template-card,
+            .modal__close,
+            .faq__question,
+            .header__badge {
+                -webkit-tap-highlight-color: transparent;
+                tap-highlight-color: transparent;
+                outline: none;
+            }
+
+            /* Плавное появление модального окна */
+            .modal {
+                transition: opacity 0.3s ease, visibility 0.3s ease;
+                opacity: 0;
+                visibility: hidden;
+            }
+
+            .modal.active {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .modal__overlay {
+                transition: opacity 0.3s ease;
+                opacity: 0;
+            }
+
+            .modal.active .modal__overlay {
+                opacity: 1;
+            }
+
+            .modal__container {
+                transform: scale(0.95);
+                opacity: 0;
+                transition: transform 0.3s cubic-bezier(0.34, 1.2, 0.64, 1), opacity 0.3s ease;
+            }
+
+            .modal.active .modal__container {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+
+            /* Кнопка Демо в модальном окне */
+            .modal__demo-btn {
+                display: inline-block;
+                margin-top: 28px;
+                padding: 12px 28px;
+                background: #b35c4a;
+                color: white;
+                border: none;
+                border-radius: 40px;
+                font-family: 'Montserrat', sans-serif;
+                font-size: 0.85rem;
+                font-weight: 500;
+                letter-spacing: 0.5px;
+                cursor: pointer;
+                transition: all 0.25s ease;
+                text-decoration: none;
+                text-align: center;
+                width: fit-content;
+            }
+
+            .modal__demo-btn:hover {
+                background: #8c4638;
+                transform: translateY(-2px);
+                box-shadow: 0 6px 14px rgba(180, 107, 92, 0.25);
+            }
+
+            .modal__demo-btn:active {
+                transform: translateY(0);
+            }
+
+            /* Стили для iframe-окна на десктопе (телефонная рамка) */
+            .demo-iframe-container {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.85);
+                backdrop-filter: blur(8px);
+                z-index: 2000;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s ease, visibility 0.3s ease;
+            }
+
+            .demo-iframe-container.active {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .demo-phone-frame {
+                width: 390px;
+                height: 780px;
+                background: #1a1a1a;
+                border-radius: 44px;
+                padding: 12px;
+                box-shadow: 0 30px 50px rgba(0, 0, 0, 0.3), 0 0 0 8px #3a3a3a;
+                position: relative;
+            }
+
+            .demo-phone-frame::before {
+                content: '';
+                position: absolute;
+                top: 16px;
                 left: 50%;
                 transform: translateX(-50%);
+                width: 130px;
+                height: 5px;
+                background: #3a3a3a;
+                border-radius: 10px;
             }
-            .faq__visual {
-                position: static;
+
+            .demo-iframe {
+                width: 100%;
+                height: 100%;
+                border: none;
+                border-radius: 32px;
+                background: white;
             }
-            .faq__image {
-                max-width: 280px;
+
+            .demo-close {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: rgba(0, 0, 0, 0.6);
+                border: none;
+                color: white;
+                font-size: 28px;
+                width: 44px;
+                height: 44px;
+                border-radius: 50%;
+                cursor: pointer;
+                backdrop-filter: blur(4px);
+                transition: all 0.2s;
+                z-index: 2001;
             }
-            .faq__answer {
-                text-align: left;
+
+            .demo-close:hover {
+                background: #b35c4a;
+                transform: scale(1.05);
             }
+
+            @media (max-width: 768px) {
+                .demo-phone-frame {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 0;
+                    padding: 0;
+                }
+                .demo-phone-frame::before {
+                    display: none;
+                }
+                .demo-iframe {
+                    border-radius: 0;
+                }
+                .demo-close {
+                    top: 16px;
+                    right: 16px;
+                    background: rgba(0, 0, 0, 0.5);
+                }
+            }
+
+            /* Указатель скролла для модального окна на мобильных */
+@media (max-width: 768px) {
+    .modal__content {
+        flex-direction: column;
+        max-height: 85vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        position: relative;
+    }
+    
+    /* Полоса прокрутки — всегда видна для наглядности */
+    .modal__content::-webkit-scrollbar {
+        width: 4px;
+    }
+    
+    .modal__content::-webkit-scrollbar-track {
+        background: #f0e4da;
+        border-radius: 4px;
+    }
+    
+    .modal__content::-webkit-scrollbar-thumb {
+        background: #b35c4a;
+        border-radius: 4px;
+    }
+    
+    /* Градиентная маска внизу — показывает, что есть ещё контент */
+    .modal__content::after {
+        content: '';
+        position: sticky;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 40px;
+        background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.9));
+        pointer-events: none;
+        display: block;
+        margin-top: -40px;
+    }
+    
+    /* Маленькая стрелка-подсказка внизу */
+/* Стрелка-подсказка */
+.modal__scroll-hint {
+    position: sticky;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    background: rgba(180, 107, 92, 0.9);
+    backdrop-filter: blur(4px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    font-weight: 400;
+    pointer-events: none;
+    z-index: 10;
+    flex-shrink: 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    animation: bounce 1.5s ease-in-out infinite;
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: 1;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-8px); }
+}
+}
+
+            /* Мобильные исправления — только скролл */
+@media (max-width: 768px) {
+    .modal__content {
+        flex-direction: column;
+        max-height: 85vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .modal__image {
+        width: 100%;
+        max-height: 50vh;
+        object-fit: cover;
+    }
+    
+    .modal__info {
+        width: 100%;
+        padding: 28px;
+        overflow-y: visible;
+    }
+    
+    .modal__demo-btn {
+        width: 100%;
+        margin-top: 24px;
+    }
+}
+
+::selection {
+    background-color: rgba(180, 107, 92, 0.3);
+    color: #2c241f;
+}
+
+::-moz-selection {
+    background-color: rgba(180, 107, 92, 0.3);
+    color: #2c241f;
+}
+
+/* Анимация печати для заголовка */
+.hero__title {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    margin: 0 auto 28px;
+    animation: typing 1.5s steps(30, end) forwards,
+               blink-cursor 0.75s step-end infinite;
+    border-right: 3px solid #b35c4a;
+}
+
+.hero__title span {
+    font-style: italic;
+    font-weight: 400;
+    color: #b35c4a;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-cursor {
+    from, to { border-color: transparent; }
+    50% { border-color: #b35c4a; }
+}
+
+/* На мобильных — отключаем эффект печати (слишком длинная строка) */
+@media (max-width: 768px) {
+    .hero__title {
+        white-space: normal;
+        width: auto;
+        border-right: none;
+        animation: fadeInUp 0.6s ease forwards;
+        opacity: 0;
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
         }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+
+
+/* REVIEWS SECTION */
+.reviews {
+    padding: 80px 0;
+    background: #fefaf7;
+    border-top: 1px solid #f0e4da;
+    border-bottom: 1px solid #f0e4da;
+}
+
+.reviews__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+.reviews__content {
+    flex: 1.2;
+}
+
+.reviews__title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: #2c241f;
+    margin-bottom: 28px;
+    letter-spacing: -0.3px;
+    position: relative;
+}
+
+.reviews__title::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: #b35c4a;
+    opacity: 0.5;
+}
+
+.reviews__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 32px;
+}
+
+.review-card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.06);
+}
+
+.review__text {
+    font-size: 1rem;
+    font-weight: 300;
+    color: #5a4a3e;
+    line-height: 1.65;
+    font-style: italic;
+    margin-bottom: 0;
+}
+
+.review__text::before {
+    content: '“';
+    font-size: 2.5rem;
+    color: #b35c4a;
+    opacity: 0.5;
+    font-family: serif;
+    line-height: 1;
+    display: inline-block;
+    margin-right: 4px;
+    vertical-align: middle;
+}
+
+.review__text::after {
+    content: '”';
+    font-size: 2.5rem;
+    color: #b35c4a;
+    opacity: 0.5;
+    font-family: serif;
+    line-height: 1;
+    display: inline-block;
+    margin-left: 4px;
+    vertical-align: bottom;
+}
+
+.reviews__visual {
+    flex: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reviews__image {
+    width: 100%;
+    max-width: 380px;
+    height: auto;
+    border-radius: 24px;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .reviews__container {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+    
+    .reviews__title::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .reviews__grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .review-card {
+        text-align: left;
+    }
+    
+    .reviews__image {
+        max-width: 280px;
+    }
+}
+
+
     </style>
 </head>
 <body>
@@ -1008,7 +1474,7 @@
 <header class="header">
     <div class="container header__inner">
         <div class="logo">
-            <span class="logo__mark">W</span>
+            <!-- <span class="logo__mark">W</span> -->
             <span class="logo__text">Wedding<span class="logo__accent">Lab</span></span>
         </div>
         <div class="header__badge">digital invitations</div>
@@ -1018,9 +1484,9 @@
 <main>
     <section class="hero">
         <div class="hero__content">
-            <div class="hero__suptitle">Создаём моменты</div>
+            <!-- <div class="hero__suptitle">Создаём моменты</div> -->
             <h1 class="hero__title">
-                Сайт-приглашение <br>на вашу <span>свадьбу</span>
+                Свадебное приглашение 
             </h1>
             <p class="hero__subtitle">
                 Элегантный цифровой формат, который тронет сердца гостей. 
@@ -1028,7 +1494,7 @@
             </p>
             <div class="hero__stats">
                 <div class="stat">
-                    <span class="stat__number">12</span>
+                    <span class="stat__number">10+</span>
                     <span class="stat__label">уникальных шаблонов</span>
                 </div>
             <div class="stat">
@@ -1295,6 +1761,32 @@
             </div>
         </div>
     </section>
+
+    <!-- Секция "Отзывы" -->
+<section class="reviews">
+    <div class="container reviews__container">
+        <div class="reviews__content">
+            <h2 class="reviews__title">Что говорят пары</h2>
+            <div class="reviews__grid">
+                <div class="review-card">
+                    <p class="review__text">Сайт-приглашение получился просто волшебным! Гости были в восторге от дизайна и удобства. Отдельное спасибо за быструю поддержку.</p>
+                </div>
+                <div class="review-card">
+                    <p class="review__text">Очень удобно, что все гости могут подтвердить участие онлайн. Форма RSVP — настоящая палочка-выручалочка. Сайт стильный и современный.</p>
+                </div>
+                <div class="review-card">
+                    <p class="review__text">Домен на своё имя — это круто! Сайт выглядит очень профессионально. Вносили изменения даже за день до свадьбы — всё оперативно поправили.</p>
+                </div>
+                <div class="review-card">
+                    <p class="review__text">Лучшее решение для современной свадьбы! Вместо бумажных приглашений — красивый сайт с таймером и картой. Гости в восторге!</p>
+                </div>
+            </div>
+        </div>
+        <div class="reviews__visual">
+            <img src="right3.png" alt="Счастливая пара" class="reviews__image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22%23b35c4a%22%3E%3Cpath d=%22M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15h-2v-2h2v2zm0-4h-2V7h2v6z%22/%3E%3C/svg%3E'">
+        </div>
+    </div>
+</section>
 </main>
 
 <footer class="footer">
@@ -1314,25 +1806,29 @@
             <div class="modal__info">
                 <h3 class="modal__title" id="modalTitle"></h3>
                 <p class="modal__desc" id="modalDesc"></p>
+                <button class="modal__demo-btn" id="demoBtn">Демо-сайт</button>
             </div>
+            <div class="modal__scroll-hint">↓</div>
         </div>
     </div>
 </div>
 
 <script>
     const templatesData = [
-        { id: 1, name: "Romance", style: "Классический романс", desc: "Нежные тона, цветочные акценты, элегантная типографика. Идеален для традиционной свадьбы в стиле ботаника." },
-        { id: 2, name: "Minimal", style: "Минимализм", desc: "Чистые линии, монохромная гамма, максимум воздуха. Для пар, ценящих лаконичность и современность." },
-        { id: 3, name: "Garden", style: "Ботанический", desc: "Акварельные растения, природные оттенки, живая атмосфера летнего сада." },
-        { id: 4, name: "Loft", style: "Лофт / Индустриальный", desc: "Кирпичные текстуры, смелые шрифты, нестандартный подход для творческих пар." },
-        { id: 5, name: "Bohemian", style: "Богемный шик", desc: "Махровые кисти, тёплые оттенки, расслабленная и романтичная эстетика." },
-        { id: 6, name: "Golden", style: "Золотая классика", desc: "Благородный декор, винтажные рамки, золотые акценты для торжественного вечера." },
-        { id: 7, name: "Nordic", style: "Скандинавский", desc: "Светлые тона, геометрия, уютная простота в каждой детали." },
-        { id: 8, name: "Story", style: "История любви", desc: "Иллюстративный стиль, кастомные сюжеты, рассказывающие вашу уникальную историю." },
-        { id: 9, name: "Art Deco", style: "Ар-деко", desc: "Геометрическое великолепие, роскошь 20-х годов, зеркальный блеск." },
-        { id: 10, name: "Rustic", style: "Рустик / Эко", desc: "Натуральное дерево, льняные текстуры, природная гармония и тепло." },
-        { id: 11, name: "Dreamy", style: "Мечтательный", desc: "Пастельные разводы, мягкие градиенты, воздушность и лёгкость." },
-        { id: 12, name: "Modern", style: "Современный", desc: "Асимметрия, яркие акценты, уникальный дизайн для смелых пар." }
+        { id: 1, name: "Lily", style: "Ботаническая элегантность", desc: "Нежные зелёные и пастельные тона, эффект растворения фотографий, цветочные акценты. Идеален для летней свадьбы на природе в усадьбе." },
+        { id: 2, name: "Timeless", style: "Элегантная классика", desc: "Тёмно-белая цветовая гамма, элегантная типографика, музыкальный плеер. Идеален для торжественной свадьбы." },
+        { id: 3, name: "Grebnivo", style: "Винтажная классика", desc: "Бордово-белая цветовая гамма, круговой аудиоплеер, календарь с выделенной датой. Идеален для торжественной свадьбы." },
+        { id: 4, name: "September", style: "Светлая воздушность", desc: "Пастельные тона, минимализм, цветовые акценты. Идеален для тёплого торжества." },
+        { id: 5, name: "Timeless", style: "Элегантный винтаж", desc: "Тёплая природная гамма, плавные линии, атмосфера уюта и душевности." },
+        { id: 6, name: "December", style: "Шебби-шик", desc: "Светлая воздушность, пастельные оттенки, нежность и лёгкость." },
+        { id: 7, name: "Vouage", style: "Журнал моды", desc: "Чёрно-белая гамма, строгая типографика, винтажная плёночная эстетика." },
+        { id: 8, name: "Childhood", style: "Ностальгический романтизм", desc: "Лёгкая винтажность, тёплые оттенки, душевность и искренность." },
+        { id: 9, name: "Breeze", style: "Морской бриз", desc: "Свежесть бирюзы, природные оттенки, лёгкость и воздушность у воды." },
+        { id: 10, name: "Classic", style: "Классическая элегантность", desc: "Сдержанная роскошь, выдержанные пропорции, благородство линий и timeless-эстетика." },
+        { id: 11, name: "Cocoa", style: "Шоколадная элегантность", desc: "Тёплая гамма кофе и какао, благородство природных оттенков, уютная роскошь." },
+        { id: 12, name: "Blossom", style: "Нежный натурализм", desc: "Природная мягкость, спокойные земные оттенки, атмосфера тепла и искренности." },
+        { id: 13, name: "Torn", style: "Артистичный винтаж", desc: "Эффект рваной бумаги, небрежная элегантность, камерность и душевность." },
+        { id: 14, name: "Tilted", style: "Каменная эстетика", desc: "Текстура керамогранита, графичность, холодная благородная сдержанность." }
     ];
 
     function renderTemplates() {
@@ -1396,19 +1892,14 @@
     const closeModalBtn = document.getElementById('closeModalBtn');
     const modalOverlay = document.querySelector('.modal__overlay');
 
-    function openModal(id, name, imgSrc, shortDesc) {
-        if (!modal) return;
-        modalImage.src = imgSrc;
-        modalTitle.innerText = name;
-        const fullDesc = shortDesc + " Полная версия сайта-приглашения включает: таймер до свадьбы, карту проезда, программу вечера, форму RSVP и онлайн-галерею для фотографий.";
-        modalDesc.innerText = fullDesc;
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    }
+
 
     function closeModal() {
         if (!modal) return;
-        modal.style.display = 'none';
+        modal.classList.remove('active');
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 300); // Ждём окончания анимации
         document.body.style.overflow = '';
     }
 
@@ -1464,6 +1955,68 @@
             item.classList.toggle('active');
         });
     });
+
+
+    // Демо-окно
+const demoContainer = document.getElementById('demoContainer');
+const demoIframe = document.getElementById('demoIframe');
+const demoCloseBtn = document.getElementById('demoCloseBtn');
+let currentDemoUrl = '';
+
+function openDemo(url) {
+    demoIframe.src = url;
+    demoContainer.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeDemo() {
+    demoContainer.classList.remove('active');
+    setTimeout(() => {
+        demoIframe.src = 'about:blank';
+    }, 300);
+    document.body.style.overflow = '';
+}
+
+// Обновите openModal — добавьте установку URL для демо
+function openModal(id, name, imgSrc, shortDesc) {
+    if (!modal) return;
+    modalImage.src = imgSrc;
+    modalTitle.innerText = name;
+    const fullDesc = shortDesc + " Полная версия сайта-приглашения включает: таймер до свадьбы, карту проезда, программу вечера, форму RSVP и онлайн-галерею для фотографий.";
+    modalDesc.innerText = fullDesc;
+    
+    // Устанавливаем URL для демо (замените на реальные ссылки)
+    currentDemoUrl = `demo/template-${id}.html`; // или любой другой URL
+    const demoBtn = document.getElementById('demoBtn');
+    if (demoBtn) {
+        demoBtn.onclick = () => openDemo(currentDemoUrl);
+    }
+    
+    modal.style.display = 'flex';
+    setTimeout(() => {
+        modal.classList.add('active');
+    }, 10);
+    document.body.style.overflow = 'hidden';
+}
+
+// Закрытие демо-окна
+if (demoCloseBtn) demoCloseBtn.addEventListener('click', closeDemo);
+demoContainer.addEventListener('click', (e) => {
+    if (e.target === demoContainer) closeDemo();
+});
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && demoContainer && demoContainer.classList.contains('active')) {
+        closeDemo();
+    }
+});
 </script>
+
+
+<div class="demo-iframe-container" id="demoContainer">
+    <div class="demo-phone-frame">
+        <iframe class="demo-iframe" id="demoIframe" src="about:blank"></iframe>
+    </div>
+    <button class="demo-close" id="demoCloseBtn">✕</button>
+</div>
 </body>
 </html>
