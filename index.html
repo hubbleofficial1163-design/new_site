@@ -1793,7 +1793,7 @@
     <div class="container footer__inner">
         <div class="footer__copyright">© 2026 WeddingLab. Все права защищены.</div>
         <div class="footer__disclaimer">*Сайт является демонстрацией шаблонов. Не является публичной офертой.</div>
-        <a href="#" class="footer__policy" id="privacyLink">Политика конфиденциальности</a>
+        <a href="https://privacy.love-2026.ru/" class="footer__policy" target="_blank" rel="noopener noreferrer">Политика конфиденциальности</a>
     </div>
 </footer>
 
@@ -1911,13 +1911,7 @@
         }
     });
 
-    const privacyLink = document.getElementById('privacyLink');
-    if (privacyLink) {
-        privacyLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            alert("Политика конфиденциальности WeddingLab\n\nСайт использует только демонстрационные материалы. Сбор персональных данных не производится. Все изображения шаблонов являются собственностью WeddingLab и представлены исключительно в ознакомительных целях.");
-        });
-    }
+
 
     document.addEventListener('DOMContentLoaded', () => {
         renderTemplates();
