@@ -2285,23 +2285,742 @@ html {
 }
 
 
+/* HERO С 3D ФОНОМ */
+.hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 0 80px;
+    background: transparent;
+}
+
+.hero__canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.hero__canvas canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+}
+
+.hero__content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.hero__scroll {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    color: #b77c6a;
+    font-weight: 300;
+    text-decoration: none;
+    z-index: 2;
+}
+
+/* HEADER */
+
+
+.header__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    text-decoration: none;
+}
+
+.logo__text {
+    font-size: 1.3rem;
+    font-weight: 300;
+    font-family: 'Cormorant Garamond', serif;
+    color: #2c241f;
+    white-space: nowrap;
+}
+
+.logo__accent {
+    color: #b35c4a;
+    font-weight: 500;
+}
+
+.header__nav {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.header__nav-link {
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: #7a6658;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    position: relative;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+.header__nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background: #b35c4a;
+    transition: width 0.3s ease;
+}
+
+.header__nav-link:hover {
+    color: #b35c4a;
+}
+
+.header__nav-link:hover::after {
+    width: 100%;
+}
+
+.header__badge {
+    background: rgba(180, 107, 92, 0.1);
+    padding: 4px 14px;
+    border-radius: 50px;
+    font-size: 0.6rem;
+    font-weight: 300;
+    letter-spacing: 1.5px;
+    color: #b35c4a;
+    font-family: 'Montserrat', sans-serif;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 700px) {
+    .header {
+        padding: 12px 0;
+    }
+    .header__inner {
+        justify-content: center;
+        gap: 10px;
+    }
+    .logo__text {
+        font-size: 1.1rem;
+    }
+    .header__nav {
+        gap: 14px;
+    }
+    .header__nav-link {
+        font-size: 0.6rem;
+    }
+    .header__badge {
+        font-size: 0.5rem;
+        padding: 3px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header__inner {
+        flex-direction: column;
+        gap: 6px;
+        padding: 4px 0;
+    }
+    .header {
+        padding: 8px 0;
+    }
+    .header__nav {
+        gap: 12px;
+    }
+    .header__nav-link {
+        font-size: 0.55rem;
+    }
+    .logo__text {
+        font-size: 1rem;
+    }
+}
+
+
+
+/* HEADER — ПРОЗРАЧНЫЙ ПО УМОЛЧАНИЮ */
+
+
+/* ЦВЕТ ЛОГОТИПА И ССЫЛОК В ПРОЗРАЧНОЙ ШАПКЕ */
+.header:not(.scrolled) .logo__text {
+    color: #2c241f;
+}
+
+.header:not(.scrolled) .header__nav-link {
+    color: rgba(44, 36, 31, 0.7);
+}
+
+.header:not(.scrolled) .header__badge {
+    background: rgba(44, 36, 31, 0.08);
+    color: #2c241f;
+}
+
+/* ЦВЕТ ПРИ СКРОЛЛЕ (стандартный) */
+.header.scrolled .logo__text {
+    color: #2c241f;
+}
+
+.header.scrolled .header__nav-link {
+    color: #7a6658;
+}
+
+.header.scrolled .header__badge {
+    background: rgba(180, 107, 92, 0.1);
+    color: #b35c4a;
+}
+
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #fefaf7;
+    color: #2c241f;
+    line-height: 1.5;
+    padding-top: 80px; /* ← отступ для шапки */
+}
+
+/* HEADER — ФИКСИРОВАННЫЙ РАЗМЕР, МЕНЯЕТСЯ ТОЛЬКО ФОН */
+
+
+/* ЦВЕТА В ПРОЗРАЧНОЙ ШАПКЕ */
+.header:not(.scrolled) .logo__text {
+    color: #2c241f;
+}
+
+.header:not(.scrolled) .header__nav-link {
+    color: rgba(44, 36, 31, 0.7);
+}
+
+.header:not(.scrolled) .header__badge {
+    background: rgba(44, 36, 31, 0.08);
+    color: #2c241f;
+}
+
+/* ЦВЕТА В БЕЛОЙ ШАПКЕ */
+.header.scrolled .logo__text {
+    color: #2c241f;
+}
+
+.header.scrolled .header__nav-link {
+    color: #7a6658;
+}
+
+.header.scrolled .header__badge {
+    background: rgba(180, 107, 92, 0.1);
+    color: #b35c4a;
+}
+
+
+/* ПЕРЕОПРЕДЕЛЯЕМ ШАПКУ — ВСЕГДА БЕЛАЯ, БЕЗ ИЗМЕНЕНИЙ */
+/* ЕДИНСТВЕННЫЙ ПРАВИЛЬНЫЙ БЛОК HEADER — УДАЛИТЕ ВСЕ ОСТАЛЬНЫЕ! */
+.header {
+    padding: 16px 0;
+    background: rgba(254, 250, 247, 0.98);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(180, 107, 92, 0.15);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.03);
+}
+
+.header.scrolled {
+    /* ТО ЖЕ САМОЕ — НИЧЕГО НЕ МЕНЯЕТСЯ */
+    background: rgba(254, 250, 247, 0.98);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(180, 107, 92, 0.15);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.03);
+}
+
+/* ТОЛЬКО ДЛЯ КНОПКИ КАЛЬКУЛЯТОР */
+.header__nav-link[href="#calc-cta"] {
+    /* Этот селектор находит только ссылку с href="#calc-cta" */
+}
+
+/* А для самой секции — увеличиваем отступ, чтобы она была по центру */
+#calc-cta {
+    scroll-margin-top: 400px; /* ← меняйте это число */
+}
+
+
+/* ============================================================
+   МОБИЛЬНАЯ АДАПТАЦИЯ
+   ============================================================ */
+
+/* ШАПКА — ГАМБУРГЕР ДЛЯ МОБИЛЬНЫХ */
+@media (max-width: 768px) {
+    .header__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 16px;
+    }
+
+    .header__nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: rgba(254, 250, 247, 0.98);
+        backdrop-filter: blur(12px);
+        padding: 20px;
+        gap: 16px;
+        border-bottom: 1px solid rgba(180, 107, 92, 0.15);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        z-index: 99;
+    }
+
+    .header__nav.active {
+        display: flex;
+    }
+
+    .header__nav-link {
+        font-size: 1rem !important;
+        padding: 8px 0;
+        text-align: center;
+        width: 100%;
+        border-bottom: 1px solid rgba(180, 107, 92, 0.06);
+    }
+
+    .header__nav-link:last-child {
+        border-bottom: none;
+    }
+
+    /* Кнопка-гамбургер */
+    .header__burger {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        padding: 4px;
+        background: none;
+        border: none;
+        z-index: 100;
+    }
+
+    .header__burger span {
+        display: block;
+        width: 28px;
+        height: 2.5px;
+        background: #2c241f;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        transform-origin: center;
+    }
+
+    .header__burger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .header__burger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .header__burger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .header__badge {
+        display: none;
+    }
+
+    .logo__text {
+        font-size: 1.1rem;
+    }
+}
+
+/* HERO — ОГРАНИЧЕНИЕ ТЕКСТА ПО ШИРИНЕ */
+@media (max-width: 768px) {
+    .hero__content {
+        padding: 0 20px;
+        max-width: 100%;
+    }
+
+    .hero__title {
+        font-size: 2.2rem !important;
+        white-space: normal;
+        word-wrap: break-word;
+        hyphens: auto;
+    }
+
+    .hero__subtitle {
+        font-size: 0.95rem !important;
+        padding: 0 4px;
+        max-width: 100%;
+    }
+
+    .hero__stats {
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .stat__number {
+        font-size: 1.8rem;
+    }
+
+    .stat__label {
+        font-size: 0.6rem;
+        text-align: center;
+    }
+
+    .hero__service {
+        padding: 6px 14px;
+        gap: 6px;
+        font-size: 0.7rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero__service-name {
+        font-size: 0.75rem;
+    }
+
+    .hero__service-link {
+        font-size: 0.6rem;
+    }
+}
+
+/* ДЛЯ ОЧЕНЬ МАЛЕНЬКИХ ЭКРАНОВ (до 400px) */
+@media (max-width: 400px) {
+    .hero__title {
+        font-size: 1.8rem !important;
+    }
+
+    .hero__subtitle {
+        font-size: 0.85rem !important;
+    }
+
+    .hero__content {
+        padding: 0 12px;
+    }
+
+    .hero__stats {
+        gap: 12px;
+    }
+
+    .stat__number {
+        font-size: 1.5rem;
+    }
+
+    .stat__label {
+        font-size: 0.5rem;
+    }
+}
+
+
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+    .header__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 16px;
+    }
+
+    .header__burger {
+        display: flex;
+    }
+
+    .header__nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: rgba(254, 250, 247, 0.98);
+        backdrop-filter: blur(12px);
+        padding: 20px;
+        gap: 16px;
+        border-bottom: 1px solid rgba(180, 107, 92, 0.15);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        z-index: 99;
+    }
+
+    .header__nav.active {
+        display: flex;
+    }
+
+    .header__nav-link {
+        font-size: 1rem !important;
+        padding: 10px 0;
+        text-align: center;
+        width: 100%;
+        border-bottom: 1px solid rgba(180, 107, 92, 0.06);
+        color: #2c241f !important;
+    }
+
+    .header__nav-link:last-child {
+        border-bottom: none;
+    }
+
+    /* Анимация гамбургера в крестик */
+    .header__burger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .header__burger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .header__burger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .header__badge {
+        display: none;
+    }
+
+    .logo__text {
+        font-size: 1.1rem;
+    }
+}
+
+/* Очень маленькие экраны */
+@media (max-width: 400px) {
+    .header__nav-link {
+        font-size: 0.9rem !important;
+        padding: 8px 0;
+    }
+}
+
+
+/* ============================================================
+   МОБИЛЬНАЯ ВЕРСИЯ
+   ============================================================ */
+@media (max-width: 768px) {
+    /* Шапка — прозрачная, без фона */
+    .header {
+        background: transparent !important;
+        backdrop-filter: none !important;
+        border-bottom: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 100 !important;
+        pointer-events: none !important;
+    }
+
+    .header__inner {
+        pointer-events: none !important;
+        padding: 0 !important;
+        gap: 0 !important;
+        justify-content: flex-end !important;
+    }
+
+    /* Логотип — скрыт */
+    .logo {
+        display: none !important;
+    }
+
+    /* Бейдж — скрыт */
+    .header__badge {
+        display: none !important;
+    }
+
+    /* Навигация — скрыта */
+    .header__nav {
+        display: none !important;
+    }
+
+    /* ГАМБУРГЕР — АККУРАТНО В УГЛУ */
+    .header__burger {
+        display: flex !important;
+        pointer-events: auto !important;
+        position: fixed !important;
+        top: 14px !important;
+        right: 16px !important;
+        background: rgba(254, 250, 247, 0.9) !important;
+        backdrop-filter: blur(8px) !important;
+        padding: 8px !important;
+        border-radius: 50% !important;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06) !important;
+        z-index: 1000 !important;
+        border: 1px solid rgba(180, 107, 92, 0.08) !important;
+        width: 40px;
+        height: 40px;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 4px;
+        cursor: pointer;
+    }
+
+    .header__burger span {
+        display: block;
+        width: 18px;
+        height: 2px;
+        background: #2c241f;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        transform-origin: center;
+        flex-shrink: 0;
+    }
+
+    /* МЕНЮ — МАЛЕНЬКИЙ БЛОК ВВЕРХУ */
+    .header__nav.active {
+        display: flex !important;
+        flex-direction: column;
+        position: fixed;
+        top: 62px;
+        right: 16px;
+        background: rgba(254, 250, 247, 0.98);
+        backdrop-filter: blur(12px);
+        padding: 16px 24px;
+        gap: 12px;
+        border-radius: 16px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(180, 107, 92, 0.08);
+        z-index: 999;
+        min-width: 160px;
+        pointer-events: auto;
+    }
+
+    .header__nav.active .header__nav-link {
+        font-size: 0.85rem !important;
+        padding: 6px 0;
+        color: #2c241f !important;
+        border-bottom: none;
+        text-align: left;
+        font-weight: 400;
+        font-family: 'Montserrat', sans-serif;
+        letter-spacing: 0.3px;
+    }
+
+    .header__nav.active .header__nav-link:hover {
+        color: #b35c4a !important;
+    }
+
+    .header__nav.active .header__nav-link::after {
+        display: none;
+    }
+
+    /* Анимация гамбургера в крестик */
+    .header__burger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(4px, 4px);
+        width: 18px;
+    }
+
+    .header__burger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .header__burger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(4px, -4px);
+        width: 18px;
+    }
+}
+
+/* ОЧЕНЬ МАЛЕНЬКИЕ ЭКРАНЫ */
+@media (max-width: 400px) {
+    .header__burger {
+        top: 12px !important;
+        right: 12px !important;
+        width: 36px;
+        height: 36px;
+        padding: 6px !important;
+    }
+
+    .header__burger span {
+        width: 16px;
+        height: 2px;
+    }
+
+    .header__nav.active {
+        top: 54px;
+        right: 12px;
+        padding: 14px 18px;
+        min-width: 130px;
+    }
+
+    .header__nav.active .header__nav-link {
+        font-size: 0.75rem !important;
+    }
+}
+
+
+/* ПЕРЕОПРЕДЕЛЯЕМ ДЛЯ ДЕСКТОПА — ГАМБУРГЕР СКРЫТ */
+@media (min-width: 769px) {
+    .header__burger {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        width: 0 !important;
+        height: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        border: none !important;
+        pointer-events: none !important;
+        position: absolute !important;
+        overflow: hidden !important;
+    }
+}
+
+
+
 
     </style>
 </head>
 <body>
 
+
 <header class="header">
     <div class="container header__inner">
         <div class="logo">
-            <!-- <span class="logo__mark">W</span> -->
             <span class="logo__text">Wedding<span class="logo__accent">Lab</span></span>
         </div>
+        
+        <!-- ГАМБУРГЕР ВСЕГДА ВИДЕН -->
+        <button class="header__burger" id="burgerBtn" aria-label="Меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <nav class="header__nav" id="headerNav">
+            <a href="#templates" class="header__nav-link">Коллекция</a>
+            <a href="#calc-cta" class="header__nav-link">Калькулятор</a>
+            <a href="#business-card" class="header__nav-link">Визитка</a>
+        </nav>
+        
         <div class="header__badge">digital invitations</div>
     </div>
 </header>
 
 <main>
-    <section class="hero">
+<section class="hero" id="hero">
+    <div class="hero__canvas" id="heroCanvas"></div>
     <div class="hero__content">
         <h1 class="hero__title">
             Свадебное приглашение 
@@ -2320,8 +3039,6 @@ html {
                 <span class="stat__label">каждая деталь с душой</span>
             </div>
         </div>
-
-        <!-- НОВИНКА — СВАДЕБНАЯ ВИЗИТКА (ПОД СТАТИСТИКОЙ) -->
         <div class="hero__service">
             <span class="hero__service-badge">новинка</span>
             <span class="hero__service-divider">·</span>
@@ -2333,7 +3050,7 @@ html {
     <div class="hero__scroll">⇣ листайте вниз ⇣</div>
 </section>
 
-    <section class="templates">
+    <section class="templates" id="templates">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Коллекция дизайнов</h2>
@@ -2346,7 +3063,7 @@ html {
 
 
     <!-- СЕКЦИЯ: ПРИЗЫВ К КАЛЬКУЛЯТОРУ -->
-<section class="calc-cta">
+<section class="calc-cta" id="calc-cta">
     <div class="container calc-cta__container">
         <div class="calc-cta__content">
             <h2 class="calc-cta__title">Хотите уникальный дизайн?</h2>
@@ -2807,6 +3524,9 @@ html {
     </div>
 </div>
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+
 <script>
     const templatesData = [
         { id: 1, name: "Lily", style: "Ботаническая элегантность", desc: "Нежные зелёные и пастельные тона, эффект растворения фотографий, цветочные акценты. Идеален для летней свадьбы на природе в усадьбе." },
@@ -2914,19 +3634,19 @@ html {
     });
 
 
-    // Управление хедером при скролле
-    const header = document.querySelector('.header');
-    let lastScroll = 0;
+// УПРАВЛЕНИЕ ШАПКОЙ ПРИ СКРОЛЛЕ
+const header = document.querySelector('.header');
 
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        
-        if (currentScroll > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
+window.addEventListener('scroll', () => {
+    const scrollY = window.pageYOffset;
+    const heroHeight = document.querySelector('.hero')?.offsetHeight || 600;
+    
+    if (scrollY > heroHeight * 0.8) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
 
         // FAQ аккордеон
     const faqItems = document.querySelectorAll('.faq__item');
@@ -2989,10 +3709,14 @@ function openModal(id, name, imgSrc, shortDesc) {
 }
 
 // Закрытие демо-окна
-if (demoCloseBtn) demoCloseBtn.addEventListener('click', closeDemo);
-demoContainer.addEventListener('click', (e) => {
-    if (e.target === demoContainer) closeDemo();
-});
+if (demoCloseBtn) {
+    demoCloseBtn.addEventListener('click', closeDemo);
+}
+if (demoContainer) {
+    demoContainer.addEventListener('click', (e) => {
+        if (e.target === demoContainer) closeDemo();
+    });
+}
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && demoContainer && demoContainer.classList.contains('active')) {
         closeDemo();
@@ -3018,6 +3742,439 @@ document.addEventListener('keydown', (e) => {
         });
     }
 })();
+
+
+
+// ============================================================
+// 3D ФОН — ШАРИКИ С АДАПТАЦИЕЙ ПОД МОБИЛЬНЫЕ
+// ============================================================
+(function() {
+    console.log('🚀 Запуск 3D шариков...');
+
+    function init() {
+        const container = document.getElementById('heroCanvas');
+        if (!container) {
+            console.error('❌ Контейнер #heroCanvas не найден!');
+            return;
+        }
+
+        if (typeof THREE === 'undefined') {
+            console.warn('⏳ Three.js не загружен, ждём...');
+            setTimeout(init, 500);
+            return;
+        }
+
+        console.log('✅ Three.js загружен!');
+
+        // ============================================================
+        // 1. АДАПТИВНЫЕ НАСТРОЙКИ
+        // ============================================================
+        const isMobile = window.innerWidth < 768;
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+        const BALL_COUNT = isMobile ? 35 : 70;
+        const GRAVITY = isMobile ? 0.0 : 0.0;
+        const FRICTION = 0.995;
+        const WALL_BOUNCE = 0.55;
+        const INFLUENCE_RADIUS = isMobile ? 2.0 : 3.0;
+        const START_DURATION = isMobile ? 1500 : 2000;
+        const SIZE_MULTIPLIER = isMobile ? 0.7 : 1.0;
+
+        const COLORS = [
+            '#b35c4a', '#d47a66', '#e8c4b8', 
+            '#f0dcd0', '#c49580', '#dfb8a8',
+            '#f2d6c8', '#e6c4b8', '#f5e0d8', '#d4a898'
+        ];
+
+        // ============================================================
+        // 2. СЦЕНА, КАМЕРА, РЕНДЕРЕР
+        // ============================================================
+        const scene = new THREE.Scene();
+
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+        const camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 100);
+        camera.position.set(0, 1.2, 14);
+        camera.lookAt(0, 0.1, 0);
+
+        const renderer = new THREE.WebGLRenderer({ 
+            antialias: true, 
+            alpha: true 
+        });
+        renderer.setSize(width, height);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.setClearColor(0xfefaf7, 0);
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.5;
+        container.appendChild(renderer.domElement);
+
+        // ============================================================
+        // 3. СВЕТ
+        // ============================================================
+        const ambient = new THREE.AmbientLight(0xffffff, 0.8);
+        scene.add(ambient);
+
+        const mainLight = new THREE.DirectionalLight(0xffffff, 1.5);
+        mainLight.position.set(5, 10, 8);
+        scene.add(mainLight);
+
+        const cursorLight = new THREE.PointLight(0xffd4c4, 1.8, 12);
+        cursorLight.position.set(0, 0, 5);
+        scene.add(cursorLight);
+
+        const bottomLight = new THREE.DirectionalLight(0xfff0ea, 0.4);
+        bottomLight.position.set(0, -8, 5);
+        scene.add(bottomLight);
+
+        // ============================================================
+        // 4. ДИНАМИЧЕСКИЕ ГРАНИЦЫ
+        // ============================================================
+const getBounds = () => {
+    const w = container.clientWidth;
+    const h = container.clientHeight;
+    const mobile = w < 768;
+    
+    // Делаем границы ещё уже, чтобы шарики точно не выходили
+    const maxBoundX = w / 2.8; // было 2.5
+    const maxBoundY = h / 3.2; // было 3.0
+    
+    return {
+        boundX: Math.min(Math.max(w / (mobile ? 90 : 140), mobile ? 2.5 : 3.5), maxBoundX),
+        boundY: Math.min(Math.max(h / (mobile ? 110 : 180), mobile ? 1.8 : 2.2), maxBoundY),
+        boundZ: mobile ? 1.5 : 2.0
+    };
+};
+        let bounds = getBounds();
+
+        // ============================================================
+        // 5. СОЗДАНИЕ ШАРИКОВ
+        // ============================================================
+        const balls = [];
+        const geometry = new THREE.SphereGeometry(0.4, 32, 32);
+
+        for (let i = 0; i < BALL_COUNT; i++) {
+            const color = COLORS[Math.floor(Math.random() * COLORS.length)];
+            const material = new THREE.MeshPhysicalMaterial({
+                color: color,
+                metalness: 0.05,
+                roughness: 0.2,
+                clearcoat: 0.3,
+                clearcoatRoughness: 0.2,
+                transparent: true,
+                opacity: 0.85,
+                envMapIntensity: 0.8,
+                reflectivity: 0.3
+            });
+
+            const mesh = new THREE.Mesh(geometry, material);
+            const scale = (0.6 + Math.random() * 0.8) * SIZE_MULTIPLIER;
+            mesh.scale.set(scale, scale, scale);
+
+            // Все шарики стартуют из центра
+            mesh.position.set(0, 0, 0);
+
+            mesh.userData = {
+                vx: (Math.random() - 0.5) * 0.08,
+                vy: (Math.random() - 0.5) * 0.08,
+                vz: (Math.random() - 0.5) * 0.06,
+                scale: scale,
+                radius: scale * 0.4,
+                color: color,
+                isActive: true
+            };
+
+            scene.add(mesh);
+            balls.push(mesh);
+        }
+
+        console.log(`✅ Создано шариков: ${balls.length}`);
+
+        // ============================================================
+        // 6. МЫШЬ / КАСАНИЕ
+        // ============================================================
+        let mouseX = 0;
+        let mouseY = 0;
+        let targetX = 0;
+        let targetY = 0;
+        const cursor3D = new THREE.Vector3();
+
+        // Для десктопа — мышь
+        document.addEventListener('mousemove', (e) => {
+            const rect = container.getBoundingClientRect();
+            mouseX = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+            mouseY = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+        });
+
+        // Для мобильных — касание
+        if (isTouchDevice) {
+            container.addEventListener('touchmove', (e) => {
+                if (e.touches.length > 0) {
+                    const rect = container.getBoundingClientRect();
+                    const touch = e.touches[0];
+                    mouseX = ((touch.clientX - rect.left) / rect.width) * 2 - 1;
+                    mouseY = -((touch.clientY - rect.top) / rect.height) * 2 + 1;
+                }
+            }, { passive: true });
+        }
+
+        // ============================================================
+        // 7. СТАРТОВАЯ АНИМАЦИЯ
+        // ============================================================
+        let startAnimation = true;
+        let startTime = 0;
+
+        // ============================================================
+        // 8. АНИМАЦИЯ
+        // ============================================================
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // --- Стартовая анимация ---
+            if (startAnimation) {
+                startTime += 16;
+                if (startTime > START_DURATION) {
+                    startAnimation = false;
+                }
+            }
+
+            // --- Плавное движение курсора ---
+            // --- Плавное движение курсора (с адаптацией под мобильные) ---
+            const smoothing = isMobile ? 0.15 : 0.4; // На телефоне плавнее
+            targetX += (mouseX - targetX) * smoothing;
+            targetY += (mouseY - targetY) * smoothing;
+            cursor3D.set(targetX * 4, targetY * 3, 0);
+
+            // --- Свет от курсора ---
+            cursorLight.position.x = targetX * 5;
+            cursorLight.position.y = targetY * 4;
+            cursorLight.position.z = 4;
+
+            // --- Обновление границ ---
+            const currentBounds = getBounds();
+
+            // --- Обновление шариков ---
+            balls.forEach((ball) => {
+                if (!ball.userData.isActive) return;
+
+                const { vx, vy, vz, scale, radius } = ball.userData;
+
+                // Гравитация
+                ball.userData.vy -= GRAVITY * 0.008;
+
+                // --- Стартовый взрыв ---
+                if (startAnimation) {
+                    const progress = Math.min(startTime / START_DURATION, 1);
+                    const strength = (1 - progress) * 0.02;
+                    const dist = Math.sqrt(
+                        ball.position.x * ball.position.x + 
+                        ball.position.y * ball.position.y + 
+                        ball.position.z * ball.position.z
+                    );
+                    if (dist < 3) {
+                        const dirX = ball.position.x || (Math.random() - 0.5);
+                        const dirY = ball.position.y || (Math.random() - 0.5);
+                        const dirZ = ball.position.z || (Math.random() - 0.5);
+                        const len = Math.sqrt(dirX*dirX + dirY*dirY + dirZ*dirZ) || 1;
+                        ball.userData.vx += (dirX / len) * strength * 2;
+                        ball.userData.vy += (dirY / len) * strength * 2;
+                        ball.userData.vz += (dirZ / len) * strength * 1.5;
+                    }
+                }
+
+// --- Локальное воздействие курсора (УСИЛЕННОЕ) ---
+const dx = ball.position.x - cursor3D.x;
+const dy = ball.position.y - cursor3D.y;
+const dz = ball.position.z - cursor3D.z;
+const dist = Math.sqrt(dx*dx + dy*dy + dz*dz);
+
+if (dist < INFLUENCE_RADIUS && dist > 0.01) {
+    const strength = (1 - dist / INFLUENCE_RADIUS) * 0.5;  // ← 0.03 → 0.08 (сильнее в 2.6 раз)
+    ball.userData.vx += (dx / dist) * strength * 1.5;       // ← добавил множитель 1.5
+    ball.userData.vy += (dy / dist) * strength * 1.5;       // ← добавил множитель 1.5
+    ball.userData.vz += (dz / dist) * strength * 0.8;       // ← 0.4 → 0.8 (сильнее в 2 раза)
+}
+
+                // --- Случайные микродвижения ---
+                ball.userData.vx += (Math.random() - 0.5) * 0.0005;
+                ball.userData.vy += (Math.random() - 0.5) * 0.0005;
+                ball.userData.vz += (Math.random() - 0.5) * 0.0005;
+
+                // --- Трение ---
+                ball.userData.vx *= FRICTION;
+                ball.userData.vy *= FRICTION;
+                ball.userData.vz *= FRICTION;
+
+                // --- Ограничение скорости ---
+                const maxVel = 0.1;
+                const vel = Math.sqrt(vx*vx + vy*vy + vz*vz);
+                if (vel > maxVel) {
+                    ball.userData.vx = (vx / vel) * maxVel;
+                    ball.userData.vy = (vy / vel) * maxVel;
+                    ball.userData.vz = (vz / vel) * maxVel;
+                }
+
+                // --- Обновление позиции ---
+                ball.position.x += ball.userData.vx;
+                ball.position.y += ball.userData.vy;
+                ball.position.z += ball.userData.vz;
+
+// --- Границы (с ограничением по ширине экрана) ---
+const currentBounds = getBounds();
+const bx = currentBounds.boundX - scale * 0.35;
+const by = currentBounds.boundY - scale * 0.35;
+const bz = currentBounds.boundZ - scale * 0.35;
+
+if (ball.position.x > bx) { ball.position.x = bx; ball.userData.vx *= -WALL_BOUNCE; }
+if (ball.position.x < -bx) { ball.position.x = -bx; ball.userData.vx *= -WALL_BOUNCE; }
+if (ball.position.y > by) { ball.position.y = by; ball.userData.vy *= -WALL_BOUNCE; }
+if (ball.position.y < -by) { ball.position.y = -by; ball.userData.vy *= -WALL_BOUNCE; }
+if (ball.position.z > bz) { ball.position.z = bz; ball.userData.vz *= -WALL_BOUNCE; }
+if (ball.position.z < -bz) { ball.position.z = -bz; ball.userData.vz *= -WALL_BOUNCE; }
+
+                // --- Вращение ---
+                ball.rotation.x += ball.userData.vy * 0.4;
+                ball.rotation.y += ball.userData.vx * 0.4;
+            });
+
+            // --- ЛЁГКИЕ СТОЛКНОВЕНИЯ ---
+            for (let i = 0; i < balls.length; i++) {
+                for (let j = i + 1; j < balls.length; j++) {
+                    const ball1 = balls[i];
+                    const ball2 = balls[j];
+                    
+                    if (!ball1.userData.isActive || !ball2.userData.isActive) continue;
+                    
+                    const dx = ball2.position.x - ball1.position.x;
+                    const dy = ball2.position.y - ball1.position.y;
+                    const dz = ball2.position.z - ball1.position.z;
+                    const dist = Math.sqrt(dx*dx + dy*dy + dz*dz);
+                    
+                    const minDist = (ball1.userData.radius + ball2.userData.radius) * 0.7;
+                    
+                    if (dist < minDist && dist > 0.001) {
+                        const overlap = (minDist - dist) * 0.3;
+                        const nx = dx / dist;
+                        const ny = dy / dist;
+                        const nz = dz / dist;
+                        
+                        ball1.position.x -= nx * overlap;
+                        ball1.position.y -= ny * overlap;
+                        ball1.position.z -= nz * overlap;
+                        ball2.position.x += nx * overlap;
+                        ball2.position.y += ny * overlap;
+                        ball2.position.z += nz * overlap;
+                        
+                        const relVx = ball1.userData.vx - ball2.userData.vx;
+                        const relVy = ball1.userData.vy - ball2.userData.vy;
+                        const relVz = ball1.userData.vz - ball2.userData.vz;
+                        const relVn = relVx*nx + relVy*ny + relVz*nz;
+                        
+                        if (relVn < 0) {
+                            const impulse = relVn * 0.15;
+                            ball1.userData.vx -= impulse * nx;
+                            ball1.userData.vy -= impulse * ny;
+                            ball1.userData.vz -= impulse * nz;
+                            ball2.userData.vx += impulse * nx;
+                            ball2.userData.vy += impulse * ny;
+                            ball2.userData.vz += impulse * nz;
+                        }
+                    }
+                }
+            }
+
+            // --- Камера ---
+            camera.position.x += (targetX * 0.8 - camera.position.x) * 0.002;
+            camera.position.y += (-targetY * 0.5 + 1.2 - camera.position.y) * 0.002;
+            camera.lookAt(0, 0.1, 0);
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // ============================================================
+        // 9. РЕСАЙЗ
+        // ============================================================
+function resize() {
+    const w = container.clientWidth;
+    const h = container.clientHeight;
+    renderer.setSize(w, h);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    
+    // Обновляем границы
+    const newBounds = getBounds();
+    
+    // Проверяем, не вышли ли шарики за новые границы
+    balls.forEach(ball => {
+        if (!ball.userData.isActive) return;
+        const scale = ball.userData.scale;
+        const bx = newBounds.boundX - scale * 0.35;
+        const by = newBounds.boundY - scale * 0.35;
+        const bz = newBounds.boundZ - scale * 0.35;
+        
+        if (Math.abs(ball.position.x) > bx) {
+            ball.position.x = Math.sign(ball.position.x) * bx;
+        }
+        if (Math.abs(ball.position.y) > by) {
+            ball.position.y = Math.sign(ball.position.y) * by;
+        }
+        if (Math.abs(ball.position.z) > bz) {
+            ball.position.z = Math.sign(ball.position.z) * bz;
+        }
+    });
+}
+
+        window.addEventListener('resize', resize);
+        if (window.ResizeObserver) {
+            const ro = new ResizeObserver(resize);
+            ro.observe(container);
+        }
+
+        setTimeout(resize, 200);
+        console.log('✅ Анимация запущена!');
+    }
+
+    // ============================================================
+    // 10. ЗАПУСК
+    // ============================================================
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        init();
+    } else {
+        document.addEventListener('DOMContentLoaded', init);
+    }
+})();
+
+// ГАМБУРГЕР
+(function() {
+    const burger = document.getElementById('burgerBtn');
+    const nav = document.getElementById('headerNav');
+
+    if (burger && nav) {
+        burger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            this.classList.toggle('active');
+            nav.classList.toggle('active');
+        });
+
+        // Закрытие при клике на ссылку
+        nav.querySelectorAll('.header__nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                burger.classList.remove('active');
+                nav.classList.remove('active');
+            });
+        });
+
+        // Закрытие при клике вне меню
+        document.addEventListener('click', function(e) {
+            if (!nav.contains(e.target) && !burger.contains(e.target)) {
+                burger.classList.remove('active');
+                nav.classList.remove('active');
+            }
+        });
+    }
+})();
+
 </script>
 
 
