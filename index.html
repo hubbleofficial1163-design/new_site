@@ -3118,9 +3118,9 @@ body {
     -webkit-backface-visibility: hidden;
     border-radius: 20px;
     overflow: hidden;
-    border: 1px solid rgba(180, 107, 92, 0.12);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
-    background: #ffffff;
+    /* border: 1px solid rgba(180, 107, 92, 0.12);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04); */
+    /* background: #ffffff; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -3397,6 +3397,69 @@ body {
     }
 }
 
+
+/* ============================================================
+   УВЕЛИЧЕНИЕ ФОТО hero1.png И zero1.png (СОВСЕМ НЕМНОГО)
+   ============================================================ */
+
+/* 1. Карточка — чуть больше */
+.business-card__flip-card {
+    max-width: 300px !important;  /* было 240px */
+    height: 520px !important;     /* было 420px */
+}
+
+/* 2. Фото — чуть увеличенное, без лишних стилей */
+.business-card__flip-image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    transform: scale(1.08) !important; /* +8% */
+}
+
+/* 3. Убираем ВСЁ лишнее — никаких рамок и фонов */
+.business-card__flip-front,
+.business-card__flip-back {
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* 4. Мобильные — чуть больше */
+@media (max-width: 768px) {
+    .business-card__flip-card {
+        max-width: 340px !important;  /* было 280px */
+        height: 620px !important;     /* было 560px */
+    }
+    
+    .business-card__flip-image {
+        transform: scale(1.1) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .business-card__flip-card {
+        max-width: 270px !important;
+        height: 520px !important;
+    }
+}
+
+@media (max-width: 380px) {
+    .business-card__flip-card {
+        max-width: 230px !important;
+        height: 440px !important;
+    }
+}
+
+
+/* Скрываем текст "наведите для переворота" на мобильных */
+@media (max-width: 768px) {
+    .business-card__flip-label {
+        display: none !important;
+    }
+}
+
+
     </style>
 </head>
 <body>
@@ -3559,12 +3622,12 @@ body {
         <div class="business-card__flip-inner">
             <!-- ПЕРЕДНЯЯ СТОРОНА (front) — zero.png -->
             <div class="business-card__flip-front">
-                <img src="zero.png" alt="Свадебная визитка" class="business-card__flip-image" />
+                <img src="zero1.png" alt="Свадебная визитка" class="business-card__flip-image" />
                 <span class="business-card__flip-label">наведите для переворота</span>
             </div>
             <!-- ЗАДНЯЯ СТОРОНА (back) — hero.png -->
             <div class="business-card__flip-back">
-                <img src="hero.png" alt="Hero приглашение" class="business-card__flip-image" />
+                <img src="hero1.png" alt="Hero приглашение" class="business-card__flip-image" />
                 <span class="business-card__flip-label">наведите для переворота</span>
             </div>
         </div>
