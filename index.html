@@ -1922,7 +1922,7 @@
 /* СЕКЦИЯ: СВАДЕБНАЯ ВИЗИТКА */
 .business-card {
     padding: 64px 0;
-    background: #fcf6f1;
+    background: #fffcf9;
     border-top: 1px solid #f0e4da;
     border-bottom: 1px solid #f0e4da;
     scroll-margin-top: 80px;
@@ -2185,7 +2185,7 @@
     font-size: 0.9rem;
     font-weight: 500;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: all 0.15s ease !important;
 }
 
 .calc-cta__btn:hover {
@@ -2988,7 +2988,414 @@ body {
 }
 
 
+/* ============================================================
+   LIQUID MORPH — ТОЛЬКО ДЛЯ ДЕСКТОПА
+   ============================================================ */
 
+/* Кнопка с эффектом */
+.calc-cta__btn.liquid-morph {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    border-radius: 60px;
+    background: #b35c4a;
+    z-index: 1;
+}
+
+/* Псевдоэлемент с градиентом */
+.calc-cta__btn.liquid-morph::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: conic-gradient(
+        #b35c4a 0deg,
+        #d47a66 90deg,
+        #f0dcd0 180deg,
+        #b35c4a 270deg,
+        #b35c4a 360deg
+    );
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+    z-index: -1;
+    border-radius: 60px;
+}
+
+/* Эффект при наведении */
+.calc-cta__btn.liquid-morph:hover {
+    border-radius: 16px !important;
+    transform: scale(1.03) rotate(2deg);
+    box-shadow: 0 12px 40px rgba(180, 107, 92, 0.35);
+}
+
+.calc-cta__btn.liquid-morph:hover::before {
+    opacity: 0.8;
+    transform: scale(2) rotate(180deg);
+}
+
+/* Текст кнопки — поверх эффекта */
+.calc-cta__btn.liquid-morph .btn-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ============================================================
+   ОТКЛЮЧАЕМ НА МОБИЛЬНЫХ
+   ============================================================ */
+@media (max-width: 768px) {
+    .calc-cta__btn.liquid-morph {
+        border-radius: 60px !important;
+        transform: none !important;
+        background: #b35c4a !important;
+    }
+
+    .calc-cta__btn.liquid-morph::before {
+        display: none !important;
+        opacity: 0 !important;
+        transform: none !important;
+    }
+
+    .calc-cta__btn.liquid-morph:hover {
+        border-radius: 60px !important;
+        transform: none !important;
+        box-shadow: none !important;
+    }
+}
+
+
+
+/* ============================================================
+   3D ПЕРЕВОРОТ КАРТОЧКИ — ФОРМАТ ТЕЛЕФОНА
+   ============================================================ */
+.business-card__flip-card {
+    width: 100%;
+    max-width: 240px;
+    height: 420px;
+    perspective: 1000px;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+.business-card__flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-style: preserve-3d;
+}
+
+/* НА ДЕСКТОПЕ — ПЕРЕВОРОТ ПРИ НАВЕДЕНИИ */
+@media (min-width: 769px) {
+    .business-card__flip-card:hover .business-card__flip-inner {
+        transform: rotateY(180deg);
+    }
+    .business-card__flip-card {
+        cursor: default;
+    }
+}
+
+/* НА МОБИЛЬНЫХ — ПЕРЕВОРОТ ПО КЛИКУ */
+@media (max-width: 768px) {
+    .business-card__flip-card.flipped .business-card__flip-inner {
+        transform: rotateY(180deg);
+    }
+}
+
+.business-card__flip-front,
+.business-card__flip-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(180, 107, 92, 0.12);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.business-card__flip-front {
+    /* zero.png — лицевая сторона */
+}
+
+.business-card__flip-back {
+    transform: rotateY(180deg);
+    /* hero.png — оборотная сторона */
+}
+
+.business-card__flip-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.business-card__flip-label {
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.55rem;
+    font-weight: 300;
+    color: #7a6658;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(4px);
+    padding: 4px 14px;
+    border-radius: 50px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.business-card__flip-card:hover .business-card__flip-label {
+    opacity: 1;
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 600px) {
+    .business-card__flip-card {
+        max-width: 200px;
+        height: 350px;
+    }
+    .business-card__flip-label {
+        font-size: 0.5rem;
+        padding: 3px 10px;
+        bottom: 10px;
+    }
+}
+
+/* Очень маленькие экраны */
+@media (max-width: 400px) {
+    .business-card__flip-card {
+        max-width: 170px;
+        height: 300px;
+    }
+}
+
+
+/* ============================================================
+   ЖЕСТКОЕ ПЕРЕОПРЕДЕЛЕНИЕ ВИЗИТКИ ДЛЯ МОБИЛЬНЫХ
+   ============================================================ */
+@media (max-width: 768px) {
+    .business-card__visual {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 20px !important;
+    }
+    
+    .business-card__flip-card {
+        max-width: 100% !important;
+        height: 520px !important;
+        width: 100% !important;
+    }
+    
+    .business-card__flip-inner {
+        width: 100% !important;
+        height: 100% !important;
+    }
+    
+    .business-card__flip-front,
+    .business-card__flip-back {
+        width: 100% !important;
+        height: 100% !important;
+        border-radius: 20px !important;
+    }
+    
+    .business-card__flip-image {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .business-card__flip-card {
+        height: 440px !important;
+    }
+}
+
+@media (max-width: 380px) {
+    .business-card__flip-card {
+        height: 360px !important;
+    }
+}
+
+
+/* ============================================================
+   ВИЗИТКА КАК ТЕЛЕФОН НА МОБИЛЬНЫХ
+   ============================================================ */
+@media (max-width: 768px) {
+    .business-card__visual {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+    
+    .business-card__flip-card {
+        max-width: 280px !important;
+        height: 560px !important; /* ВЫТЯНУТАЯ ПРОПОРЦИЯ ТЕЛЕФОНА */
+        width: 100% !important;
+        perspective: 1000px !important;
+    }
+    
+    .business-card__flip-inner {
+        width: 100% !important;
+        height: 100% !important;
+        position: relative !important;
+        transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1) !important;
+        transform-style: preserve-3d !important;
+    }
+    
+    .business-card__flip-front,
+    .business-card__flip-back {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        backface-visibility: hidden !important;
+        -webkit-backface-visibility: hidden !important;
+        border-radius: 24px !important;
+        overflow: hidden !important;
+        border: 2px solid rgba(180, 107, 92, 0.15) !important;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08) !important;
+        background: #ffffff !important;
+    }
+    
+    .business-card__flip-back {
+        transform: rotateY(180deg) !important;
+    }
+    
+    .business-card__flip-image {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        display: block !important;
+    }
+    
+    .business-card__flip-label {
+        position: absolute !important;
+        bottom: 16px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        font-size: 0.6rem !important;
+        font-weight: 300 !important;
+        color: #7a6658 !important;
+        background: rgba(255, 255, 255, 0.9) !important;
+        backdrop-filter: blur(4px) !important;
+        padding: 4px 16px !important;
+        border-radius: 50px !important;
+        letter-spacing: 0.5px !important;
+        white-space: nowrap !important;
+        opacity: 0.8 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .business-card__flip-card {
+        max-width: 240px !important;
+        height: 480px !important;
+    }
+}
+
+@media (max-width: 380px) {
+    .business-card__flip-card {
+        max-width: 200px !important;
+        height: 400px !important;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .business-card__flip-inner {
+        transition: transform 1.5s cubic-bezier(0.23, 1, 0.32, 1) !important;
+    }
+}
+
+
+/* Убираем синее выделение на мобильных */
+.business-card__flip-card {
+    -webkit-tap-highlight-color: transparent !important;
+    tap-highlight-color: transparent !important;
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+}
+
+.business-card__flip-card * {
+    -webkit-tap-highlight-color: transparent !important;
+    tap-highlight-color: transparent !important;
+}
+
+
+@media (max-width: 768px) {
+    .faq__image {
+        display: none !important;
+    }
+}
+
+/* Вертикальное отображение ВЕЗДЕ */
+.hero__service {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+.hero__service-divider {
+    display: none !important;
+}
+
+
+/* Мягкое выделение "Свадебная визитка" */
+.hero__service-name {
+    font-size: 1rem !important;
+    font-weight: 300 !important;
+    color: #b35c4a !important;
+    /* background: rgba(180, 107, 92, 0.06) !important; */
+    padding: 2px 16px !important;
+    border-radius: 50px !important;
+}
+
+/* Выделение "Визитка" в шапке */
+.header__nav-link[href="#business-card"] {
+    color: #b35c4a !important;
+    font-weight: 500 !important;
+    position: relative !important;
+}
+
+/* .header__nav-link[href="#business-card"]::after {
+    content: '✦';
+    font-size: 0.5rem;
+    margin-left: 4px;
+    color: #b35c4a;
+} */
+
+/* На мобильных тоже */
+@media (max-width: 768px) {
+    .header__nav.active .header__nav-link[href="#business-card"] {
+        color: #b35c4a !important;
+        font-weight: 300 !important;
+    }
+}
 
     </style>
 </head>
@@ -3071,17 +3478,104 @@ body {
                 Если ни один из шаблонов не подходит — мы разработаем сайт с нуля 
                 под ваш стиль и пожелания.
             </p>
-            <a href="https://calc.love-2026.ru" class="calc-cta__btn" target="_blank" rel="noopener noreferrer">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                    <path d="M2 17l10 5 10-5"/>
-                    <path d="M2 12l10 5 10-5"/>
-                </svg>
-                Примерный расчёт стоимости
-            </a>
+<a href="https://calc.love-2026.ru" class="calc-cta__btn liquid-morph" target="_blank" rel="noopener noreferrer">
+    <span class="btn-content">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+        </svg>
+        Примерный расчёт стоимости
+    </span>
+</a>
         </div>
     </div>
 </section>
+
+
+
+
+    <!-- СЕКЦИЯ: СВАДЕБНАЯ ВИЗИТКА -->
+        <section class="business-card" id="business-card">
+            <div class="container business-card__container">
+                <div class="business-card__content">
+                    <span class="business-card__badge">НОВИНКА</span>
+                    <h2 class="business-card__title">Свадебная визитка</h2>
+        <p class="business-card__subtitle">
+            Минималистичный сайт-визитка для вашей свадьбы, <br>
+            <span class="business-card__hint">а ещё — для приглашения на свидание. . .</span> <br>
+            Ничего лишнего, масимально просто
+        </p>
+            
+            <ul class="business-card__features">
+                <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b35c4a" stroke-width="2">
+                        <path d="M20 6L9 17L4 12" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>1–2 фотографии</span>
+                </li>
+                <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b35c4a" stroke-width="2">
+                        <path d="M20 6L9 17L4 12" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>Адрес локации</span>
+                </li>
+                <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b35c4a" stroke-width="2">
+                        <path d="M20 6L9 17L4 12" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>Кнопка "Как добраться"</span>
+                </li>
+                <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b35c4a" stroke-width="2">
+                        <path d="M20 6L9 17L4 12" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>Красивый домен</span>
+                </li>
+
+                <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b35c4a" stroke-width="2">
+                        <path d="M20 6L9 17L4 12" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>Музыка на Ваш выбор</span>
+                </li>
+
+                <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b35c4a" stroke-width="2">
+                        <path d="M20 6L9 17L4 12" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>Фиксированная цена</span>
+                </li>
+            </ul>
+            
+            <!-- <div class="business-card__action">
+                <a href="https://calc.love-2026.ru" class="business-card__btn">Узнать стоимость →</a>
+                <span class="business-card__note">или посчитайте в калькуляторе</span>
+            </div> -->
+        </div>
+        
+<div class="business-card__visual">
+    <div class="business-card__flip-card">
+        <div class="business-card__flip-inner">
+            <!-- ПЕРЕДНЯЯ СТОРОНА (front) — zero.png -->
+            <div class="business-card__flip-front">
+                <img src="zero.png" alt="Свадебная визитка" class="business-card__flip-image" />
+                <span class="business-card__flip-label">наведите для переворота</span>
+            </div>
+            <!-- ЗАДНЯЯ СТОРОНА (back) — hero.png -->
+            <div class="business-card__flip-back">
+                <img src="hero.png" alt="Hero приглашение" class="business-card__flip-image" />
+                <span class="business-card__flip-label">наведите для переворота</span>
+            </div>
+        </div>
+    </div>
+    <!-- <span class="business-card__mockup-label">пример визитки</span> -->
+</div>
+    </div>
+</section>
+
+
+
 
 
         <!-- Секция "О проекте" -->
@@ -3130,6 +3624,9 @@ body {
             </div>
         </div>
     </section>
+
+
+
 
         <!-- Секция "Как это работает" -->
     <section class="how-it-works">
@@ -3421,80 +3918,7 @@ body {
 
 
 
-<!-- СЕКЦИЯ: СВАДЕБНАЯ ВИЗИТКА -->
-<section class="business-card" id="business-card">
-    <div class="container business-card__container">
-        <div class="business-card__content">
-            <span class="business-card__badge">НОВИНКА</span>
-            <h2 class="business-card__title">Свадебная визитка</h2>
-<p class="business-card__subtitle">
-    Минималистичный сайт-визитка для вашей свадьбы, <br>
-    <span class="business-card__hint">а ещё — для приглашения на свидание. . .</span> <br>
-    Ничего лишнего, масимально просто
-</p>
-            
-            <ul class="business-card__features">
-                <li>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b35c4a" stroke-width="2">
-                        <path d="M20 6L9 17L4 12" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span>1–2 фотографии</span>
-                </li>
-                <li>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b35c4a" stroke-width="2">
-                        <path d="M20 6L9 17L4 12" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span>Адрес локации</span>
-                </li>
-                <li>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b35c4a" stroke-width="2">
-                        <path d="M20 6L9 17L4 12" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span>Кнопка "Как добраться"</span>
-                </li>
-                <li>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b35c4a" stroke-width="2">
-                        <path d="M20 6L9 17L4 12" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span>Красивый домен</span>
-                </li>
 
-                <li>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b35c4a" stroke-width="2">
-                        <path d="M20 6L9 17L4 12" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span>Музыка на Ваш выбор</span>
-                </li>
-
-                <li>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b35c4a" stroke-width="2">
-                        <path d="M20 6L9 17L4 12" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span>Фиксированная цена</span>
-                </li>
-            </ul>
-            
-            <!-- <div class="business-card__action">
-                <a href="https://calc.love-2026.ru" class="business-card__btn">Узнать стоимость →</a>
-                <span class="business-card__note">или посчитайте в калькуляторе</span>
-            </div> -->
-        </div>
-        
-        <div class="business-card__visual">
-            <div class="business-card__mockup">
-                <div class="business-card__mockup-inner">
-                    <div class="business-card__mockup-photo">📸</div>
-                    <div class="business-card__mockup-info">
-                        <span class="business-card__mockup-name">Анна & Максим</span>
-                        <span class="business-card__mockup-location">📍 Ресторан "Уют", Москва</span>
-                        <span class="business-card__mockup-btn">Как добраться →</span>
-                    </div>
-                </div>
-                <span class="business-card__mockup-label">пример визитки</span>
-            </div>
-        </div>
-    </div>
-</section>
 
 </main>
 
@@ -3523,6 +3947,8 @@ body {
         </div>
     </div>
 </div>
+
+
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
@@ -3854,17 +4280,16 @@ const getBounds = () => {
 
         for (let i = 0; i < BALL_COUNT; i++) {
             const color = COLORS[Math.floor(Math.random() * COLORS.length)];
-            const material = new THREE.MeshPhysicalMaterial({
-                color: color,
-                metalness: 0.05,
-                roughness: 0.2,
-                clearcoat: 0.3,
-                clearcoatRoughness: 0.2,
-                transparent: true,
-                opacity: 0.85,
-                envMapIntensity: 0.8,
-                reflectivity: 0.3
-            });
+        const material = new THREE.MeshPhysicalMaterial({
+            color: color,
+            metalness: 0.1,
+            roughness: 0.15,
+            clearcoat: 0.5,
+            clearcoatRoughness: 0.15,
+            envMapIntensity: 1.0,
+            reflectivity: 0.4
+        });
+
 
             const mesh = new THREE.Mesh(geometry, material);
             const scale = (0.6 + Math.random() * 0.8) * SIZE_MULTIPLIER;
@@ -4173,6 +4598,58 @@ function resize() {
             }
         });
     }
+})();
+
+
+// 3D ПЕРЕВОРОТ КАРТОЧКИ
+(function() {
+    const card = document.querySelector('.business-card__flip-card');
+    if (!card) return;
+
+    const isMobile = window.innerWidth <= 768;
+
+    if (isMobile) {
+        card.addEventListener('click', function() {
+            this.classList.toggle('flipped');
+        });
+    }
+
+    let autoFlip = true;
+    let timeoutId;
+
+    function startAutoFlip() {
+        if (!autoFlip) return;
+        if (!isMobile) {
+            timeoutId = setTimeout(() => {
+                card.classList.add('flipped');
+                setTimeout(() => {
+                    card.classList.remove('flipped');
+                    startAutoFlip();
+                }, 3000);
+            }, 4000);
+        } else {
+            timeoutId = setTimeout(() => {
+                card.classList.add('flipped');
+                setTimeout(() => {
+                    card.classList.remove('flipped');
+                    startAutoFlip();
+                }, 2500);
+            }, 5000);
+        }
+    }
+
+    if (isMobile) {
+        card.addEventListener('click', function() {
+            autoFlip = false;
+            clearTimeout(timeoutId);
+            setTimeout(() => {
+                autoFlip = true;
+                startAutoFlip();
+            }, 10000);
+        });
+    }
+
+    startAutoFlip();
 })();
 
 </script>
